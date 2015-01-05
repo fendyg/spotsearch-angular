@@ -19,7 +19,13 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/search/artist/:query', {
+        templateUrl: 'views/artistsearch.html',
+        controller: 'ArtistSearchController'
+      })
+      .when('/search/album/:query', {
+        templateUrl: 'views/albumsearch.html',
+        controller: 'AlbumSearchController'
       })
       .when('/about', {
       })

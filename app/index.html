@@ -39,25 +39,12 @@
             <span class="input-group-btn"><button name="button" id="submit" ng-click="runSearch()" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button></span>
           </div>
         </form>
-
-        <div class="album-results">
-          <span ng-repeat="item in results.albums.items">
-            <a href="#album/{{ item.id }}"><img style="border: 1px solid black; margin: 5px; width: 160px;" ng-src="{{item.images[1].url}}"></a>
-          </span>
-        </div>
-
-        <div class="artist-results">
-          <ul>
-            <li ng-repeat="item in results.artists.items">{{item.name}}</li>
-          </ul>
-        </div>
-
       </div>
 
       <div ng-view=""></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the heart</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from the team</p>
       </div>
     </div>
 
@@ -95,9 +82,9 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/search.js"></script>
+        <script src="scripts/controllers/albumsearch.js"></script>
+        <script src="scripts/controllers/artistsearch.js"></script>
         <script src="scripts/services/searchfactory.js"></script>
         <!-- endbuild -->
 </body>
