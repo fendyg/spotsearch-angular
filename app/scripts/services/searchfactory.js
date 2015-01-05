@@ -11,5 +11,9 @@ angular.module('spotsearchAngularApp')
             searchInput + '&type=' + types);
     };
 
+    searchFactory.getAlbum = function(albumID) {
+        return $http.get('https://api.spotify.com/v1/albums/' + albumID);
+    };
+
     return searchFactory;
 }]);

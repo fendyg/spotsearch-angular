@@ -1,0 +1,27 @@
+<div class="album-view col-md-12 col-sm-12 col-lg-12">
+  <a href="{{ uri }}"><img style="border: 1px solid black; margin: 5px 20px 5px 5px; width: 260px; float: left;" ng-src="{{ results.images[0].url }}">
+      </a>
+
+  <h1>{{results.name}}</h1>
+
+  <h2 ng-repeat="artist in results.artists">
+    <a href = "/#artist/{{ artist.id }}" > {{ artist.name }} </a>
+  </h2>
+
+  <audio media-player="player" controls data-playlist="playlist">
+    <source src="" type="audio/ogg"></source>
+  </audio>
+
+  <table class="table table-striped">
+    <tr>
+      <th>#</th>
+      <th>Track Name</th>
+    </tr>
+    <tr ng-repeat="track in results.tracks.items" id="track-number-{{ track.track_number }}">
+      <td>{{ track.track_number }}</td>
+      <td><a class="track" ng-click="playTrack(track.preview_url)">{{ track.name }}</a>
+      </td>
+
+    </tr>
+  </table>
+</div>

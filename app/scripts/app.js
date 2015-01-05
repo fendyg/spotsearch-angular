@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'mediaPlayer'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -26,6 +27,10 @@ angular
       .when('/search/album/:query', {
         templateUrl: 'views/albumsearch.html',
         controller: 'AlbumSearchController'
+      })
+      .when('/album/:albumId', {
+        templateUrl: 'views/album.html',
+        controller: 'AlbumController'
       })
       .when('/about', {
       })
