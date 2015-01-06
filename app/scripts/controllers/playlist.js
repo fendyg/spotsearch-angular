@@ -42,7 +42,7 @@ angular.module('spotsearchAngularApp')
         $scope.playTrack = function(url, trackNumber) {
             $scope.playingTrack = trackNumber;
             $scope.player.load({src:url});
-            $scope.player.play;
+            $scope.player.play();
         };
 
         if(typeof $scope.playlistId === 'undefined') {
