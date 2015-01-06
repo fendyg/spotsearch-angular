@@ -1,0 +1,39 @@
+<div class="form-group">
+  <select ng-model="playlistId" ng-change="changePlaylist()" class="playlist-selector form-control input-sm">
+    <option value="">Select a playlist</option>
+    <option ng-repeat="playlist in playlists" value="{{ playlist.id }}">{{ playlist.name }} </option>
+  </select>
+</div>
+
+<div ng-show="activePlaylist" class="album-view col-md-12 col-sm-12 col-lg-12">
+
+  <h1>{{ activePlaylist.name }}</h1>
+  <hr>
+
+  <img id="current-song-image" style="border: 1px solid black; margin: 5px 20px 5px 5px; width: 200px; float: left;" ng-src="{{ activePlaylist.tracks[playingTrack].imageURL }}">
+
+  <h2 id="playing-track"> {{ activePlaylist.tracks[playingTrack].name }} </h2>
+  <h3 id="playing-artist"> {{ activePlaylist.tracks[playingTrack].artist }}</h3>
+  <div>
+    <audio media-player="player" controls data-playlist="playlist">
+      <source src="" type="audio/ogg">
+      </audio>
+    </div>
+
+    <table class="table table-striped">
+      <tr>
+        <th>Track Name</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="track in activePlaylist.tracks">
+        <td style="width:100%;"><a class="track" ng-click="playTrack(track.trackURL, $index)">{{ track.name }}</a> - {{ track.artist }}
+        </td>
+        <td class="removeFromPlaylist">
+          <div class="col-sm-2">
+            <button formaction="#" ng-click="deleteTrack($index)" class="remove-song btn btn-sm">remove song</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <button class="delete-playlist btn btn-lg" ng-click="deletePlaylist()">Delete Playlist</button>
+  </div>

@@ -16,12 +16,43 @@
     <tr>
       <th>#</th>
       <th>Track Name</th>
+      <th>Add to Playlist</th>
     </tr>
     <tr ng-repeat="track in results.tracks.items" id="track-number-{{ track.track_number }}">
       <td>{{ track.track_number }}</td>
       <td><a class="track" ng-click="playTrack(track.preview_url)">{{ track.name }}</a>
       </td>
-
+      <td>
+        <select ng-model="selectedPlaylist">
+          <option value="">Select a Playlist...</option>
+          <option ng-repeat="playlist in playlists" value="{{ playlist.id }}">{{ playlist.name }}
+          </option>
+          <option value="newplaylist">add to new playlist</option>
+        </select>
+        <button class="add-track btn btn-sm" formaction="#" name="add-track" ng-click="addTrack(track.track_number, selectedPlaylist)" id="track-{{ track_number }}">Add Track</button>
+      </td>
     </tr>
   </table>
 </div>
+
+<div id="name-new-playlist" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">Playlist Name</h4>
+      </div>
+      <div class="modal-body">
+        <input class="form-group form-control" ng-model="newPlaylistName" id="name-playlist"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="submit-name" class="btn btn-primary" ng-click="createPlaylist(newPlaylistName)" ng-model="newPlaylistName">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

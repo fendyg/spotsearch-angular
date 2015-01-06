@@ -16,9 +16,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'mediaPlayer'
+    'mediaPlayer',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, localStorageServiceProvider) {
+
     $routeProvider
       .when('/search/artist/:query', {
         templateUrl: 'views/artistsearch.html',
@@ -32,9 +34,19 @@ angular
         templateUrl: 'views/album.html',
         controller: 'AlbumController'
       })
+      .when('/playlists/', {
+        templateUrl: 'views/playlist.html',
+        controller: 'PlaylistController'
+      })
+      .when('/playlists/:playlistId', {
+        templateUrl: 'views/playlist.html',
+        controller: 'PlaylistController'
+      })
       .when('/about', {
       })
       .otherwise({
         redirectTo: '/'
       });
+
+    localStorageServiceProvider.setPrefix('spotsearch-playlist');
   });
