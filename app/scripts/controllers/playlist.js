@@ -39,6 +39,12 @@ angular.module('spotsearchAngularApp')
             localStorageService.set($scope.playlistId, $scope.activePlaylist);
         };
 
+        $scope.playTrack = function(url, trackNumber) {
+            $scope.playingTrack = trackNumber;
+            $scope.player.load({src:url});
+            $scope.player.play;
+        };
+
         if(typeof $scope.playlistId === 'undefined') {
             console.log('no playlist');
         } else {
